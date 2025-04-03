@@ -1,0 +1,32 @@
+{% extends 'oneXbet/layouts/layout.html' %}
+{% block root %}
+    <div class="col-md-4 col-md-offset-4" id="login">
+        <section id="inner-wrapper" class="login">
+            <article>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for f in form %}
+{#                        <!--<p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>-->#}
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"> </i>{{ f.label }}</span>
+                                {{ f }}
+                                {% if f.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                       {{ f.errors }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times</span>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+                </form>
+            </article>
+        </section>
+    </div>
+{% endblock %}
