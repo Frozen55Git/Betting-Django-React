@@ -1,0 +1,73 @@
+{% extends 'oneXbet/football/league.html' %}
+{% block football %}
+    <br>
+    <div class="container">
+        <div class="match">
+            <div class="match-header">
+                <div class="match-tournament"><img src="{{ league.poster.url }}" width="100" height="100" alt="..."/></div>
+            </div>
+            <div class="match-content">
+                <div class="column">
+                    <div class="team team--home">
+                        <div class="team-logo">
+                            <img src="{{ game.club1.poster.url }}" alt="..."/>
+                        </div>
+                        <h2 class="team-name">{{ game.club1.name }}</h2>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="match-details">
+                        <div class="match-date">
+                            12 Aug at <strong>19:00</strong>
+                        </div>
+                        <div class="match-score">
+                            <span class="match-score-number match-score-number--leading">-</span>
+                            <span class="match-score-divider">:</span>
+                            <span class="match-score-number">-</span>
+                        </div>
+                        <div class="match-time-lapsed">
+                            90
+                        </div>
+                        <div class="match-referee">
+                            Referee: <strong>Joseph Hicks</strong>
+                        </div>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="row justify-content-center pb-5" style="margin-top: 50px">
+                                <div class="col-12 pb-5">
+                                    <input class="checkbox-tools" type="radio" checked name="win" id="tool-1" value="{{ game.club1.pk }}" >
+                                    <label style="width: 30%;" class="for-checkbox-tools" for="tool-1">
+                                        win 2x
+                                    </label><input class="checkbox-tools" type="radio" name="win" id="tool-2" value="0">
+                                    <label style="width: 30%; " class="for-checkbox-tools" for="tool-2" >
+                                        draw 1,5x
+                                    </label><input class="checkbox-tools" type="radio" name="win" value="{{ game.club2.pk }}" id="tool-3">
+                                    <label style="width: 30%;padding: 20px" class="for-checkbox-tools" for="tool-3">
+                                        win 2x
+                                    </label>
+                                    <label for="money">money</label>
+                                    <input type="number" name="money">
+                                </div>
+                                <button class="match-bet-place" >bet</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div class="team-logo">
+                            {#                            https://assets.codepen.io/285131/chelsea.svg#}
+                            <img src="{{ game.club2.poster.url }}" alt=".."/>
+                        </div>
+                        <h2 class="team-name">{{ game.club2.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
+
